@@ -1,2 +1,13 @@
 @import "tailwindcss";
-/*test*/
+
+@theme {
+    --font-poppins: Poppins, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --text-large: 10em;
+}
+
+@layer base {
+    html {
+        @apply bg-black;
+    }
+}
