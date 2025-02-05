@@ -11,7 +11,7 @@ const App = () => {
                     </div>
 
                     <div className="mt-0 relative left-100">
-                        <h1 className="text-gray-50 font-impact text-9xl shadow-lg shadow-fuchsia-300">SOCIAL DMV</h1>
+                        <h1 className="text-gray-50 font-impact text-9xl">SOCIAL DMV</h1>
                     </div>
 
                     <div className="mt-6 relative left-100">
