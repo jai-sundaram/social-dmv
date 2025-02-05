@@ -1,7 +1,6 @@
 import React from 'react'
 import {Link} from 'react-scroll'
 import Info from "./Info.jsx";
-
 const Home = () => {
     return (
         <div className="bg-black w-full h-full">
@@ -18,14 +17,14 @@ const Home = () => {
 
             <div className="absolute top-135 right-143">
                 <Link
-                    to="info_section"
+                    to="info-section"
                     spy={true}
                     smooth={true}
                     offset={50}
                     duration={500}
                 >
                     <button
-                        className="h-20 w-62  bg-gradient-to-r from-purple-500 to-pink-500 hover: shadow-lg hover:shadow-fuchsia-300 hover:scale-120 text-white font-bold ">
+                        className="h-20 w-62  bg-gradient-to-r from-purple-500 to-pink-500 hover: shadow-lg hover:shadow-fuchsia-300 hover:scale-110 text-white font-bold ">
                         Get Started
                     </button>
                 </Link>
