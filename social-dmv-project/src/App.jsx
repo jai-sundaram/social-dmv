@@ -27,7 +27,7 @@ const App = () => {
                         spy={true}
                         smooth={true}
                         offset={120}
-                        duration={500}
+                        duration={1000}
                     >
                         <button className="h-20 w-62 bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-fuchsia-300 hover:scale-110 text-white font-bold">
                             Get Started
