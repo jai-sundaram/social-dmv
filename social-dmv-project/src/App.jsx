@@ -1,6 +1,9 @@
 import React from 'react'
 import {Link} from 'react-scroll'
 
+
+const API_BASE_URL = "https://places.googleapis.com/v1/places:searchNearby"
+
 const App = () => {
     return (
         <div className="bg-black w-full min-h-screen">
