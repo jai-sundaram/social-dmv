@@ -2,12 +2,14 @@ import {useState, useEffect} from 'react'
 import {Link} from 'react-scroll'
 const API_BASE_URL = "https://places.googleapis.com/v1/places:searchNearby";
 const PROXY_URL = "https://corsproxy.io/?";
-const API_KEY = "blank"
+const API_KEY = "AIzaSyBD1uPYgbLYMEvgKoHSQtRh8v0E4UuuO9g"
+const CORS_KEY = "temp_6be3ba18cf776d492692658de45722ca";  // CORS Shifter key
 const API_OPTIONS = {
     method: "GET",
     headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${API_KEY}`
+        Authorization: `Bearer ${API_KEY}`,
+        "x-cors-api-key": CORS_KEY
     }
 }
 
