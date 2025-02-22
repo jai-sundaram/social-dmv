@@ -1,10 +1,13 @@
-import React from 'react'
+import {useState, useEffect} from 'react'
 import {Link} from 'react-scroll'
 
-
-const API_BASE_URL = "https://places.googleapis.com/v1/places:searchNearby"
+const API_BASE_URL = "https://places.googleapis.com/v1/places:searchNearby";
+const API_KEY = "x"
 
 const App = () => {
+    useEffect(() => {
+
+    }, [])
     return (
         <div className="bg-black w-full min-h-screen">
             <div className="h-screen">
