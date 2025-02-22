@@ -1,11 +1,28 @@
 import {useState, useEffect} from 'react'
 import {Link} from 'react-scroll'
-
 const API_BASE_URL = "https://places.googleapis.com/v1/places:searchNearby";
-const API_KEY = "x"
+const PROXY_URL = "https://corsproxy.io/?";
+const API_KEY = "blank"
+const API_OPTIONS = {
+    method: "GET",
+    headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${API_KEY}`
+    }
+}
 
 const App = () => {
+    const fetchPlaces = async () => {
+        try{
+            const endpoint = `${PROXY_URL}${API_BASE_URL}/search?includedTypes=restaurant&maxResultCount=10&latitude=37.7937&longitude=-122.3965&radius=500.0`;
+            const response = await fetch(endpoint, API_OPTIONS);
+            // eslint-disable-next-line no-unused-vars
+        }catch(error){
+            console.error("Error fetching places...")
+        }
+    }
     useEffect(() => {
+        fetchPlaces()
 
     }, [])
     return (
