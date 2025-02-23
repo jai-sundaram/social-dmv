@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import {Link} from 'react-scroll'
-const API_KEY = "blank"
+const API_KEY = import.meta.env.VITE_API_KEY
 
 
 const App = () => {
