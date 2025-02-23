@@ -6,7 +6,7 @@ const API_KEY = import.meta.env.VITE_API_KEY
 const App = () => {
     const fetchPlaces = async () => {
         try{
-            const endpoint = `https://api.tomtom.com/search/2/nearbySearch/.json?key=${API_KEY}&lat=38.89511&lon=-77.03637`;
+            const endpoint = `https://api.tomtom.com/search/2/nearbySearch/.json?key=${API_KEY}&lat=38.89511&lon=-77.03637&categorySet=7315,9379,7373&limit=100`;
             const response = await fetch(endpoint);
             if(!response.ok){
                 throw new Error("Error")
