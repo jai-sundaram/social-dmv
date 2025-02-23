@@ -19,6 +19,7 @@ const App = () => {
                 setPlaces([])
                 return
             }
+            console.log(data)
             setPlaces(data.response || [])
         }
             // eslint-disable-next-line no-unused-vars
@@ -69,6 +70,18 @@ const App = () => {
             <div id="info-section">
                 <h1 className="text-gray-50 font-impact text-9xl  relative left-150 top-20">TEST</h1>
                 <h1 className="text-gray-50 font-impact relative left-150 top-70">place data goes here </h1>
+                {
+                    message ? (
+                        <p className="text-gray-50 font-impact relative left-150 top-70">{message}</p>):
+                        (
+                            <ul>
+                                {places.map((place) =>(
+                                    <li key={place.id}></li>
+                                ))}
+                            </ul>
+                        )
+
+                }
             </div>
             </div>
         </div>
