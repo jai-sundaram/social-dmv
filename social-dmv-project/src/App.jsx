@@ -1,25 +1,21 @@
 import {useState, useEffect} from 'react'
 import {Link} from 'react-scroll'
-const API_BASE_URL = "https://places.googleapis.com/v1/places:searchNearby";
-const PROXY_URL = "https://corsproxy.io/?";
 const API_KEY = "blank"
-const CORS_KEY = "temp_6be3ba18cf776d492692658de45722ca";  // CORS Shifter key
-const API_OPTIONS = {
-    method: "GET",
-    headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${API_KEY}`,
-        "x-cors-api-key": CORS_KEY
-    }
-}
+
 
 const App = () => {
     const fetchPlaces = async () => {
         try{
-            const endpoint = `${PROXY_URL}${API_BASE_URL}/search?includedTypes=restaurant&maxResultCount=10&latitude=37.7937&longitude=-122.3965&radius=500.0`;
-            const response = await fetch(endpoint, API_OPTIONS);
+            const endpoint = `https://api.tomtom.com/search/2/nearbySearch/.json?key=${API_KEY}&lat=36.98844&lon=-121.97483`;
+            const response = await fetch(endpoint);
+            if(!response.ok){
+                throw new Error("Error")
+            }
+            const data = await response.json();
+            console.log(data)
             // eslint-disable-next-line no-unused-vars
         }catch(error){
+
             console.error("Error fetching places...")
         }
     }
