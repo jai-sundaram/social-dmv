@@ -4,7 +4,9 @@ const API_KEY = import.meta.env.VITE_API_KEY
 
 
 const App = () => {
-    const fetchPlaces = async () => {
+    const [message, setMessage] = useState('')
+    const [places, setPlaces] = useState([])
+    const getPlaces = async () => {
         try{
             const endpoint = `https://api.tomtom.com/search/2/nearbySearch/.json?key=${API_KEY}&lat=38.89511&lon=-77.03637&categorySet=7315,9379,7373&limit=100`;
             const response = await fetch(endpoint);
@@ -12,15 +14,21 @@ const App = () => {
                 throw new Error("Error")
             }
             const data = await response.json();
-            console.log(data)
+            if(data.response==="False"){
+                setMessage("Failed to fetch data")
+                setPlaces([])
+                return
+            }
+            setPlaces(data.response || [])
+        }
             // eslint-disable-next-line no-unused-vars
-        }catch(error){
+        catch(error){
 
             console.error("Error fetching places...")
         }
     }
     useEffect(() => {
-        fetchPlaces()
+        getPlaces()
 
     }, [])
     return (
@@ -60,6 +68,7 @@ const App = () => {
             <div  className="h-screen">
             <div id="info-section">
                 <h1 className="text-gray-50 font-impact text-9xl  relative left-150 top-20">TEST</h1>
+                <h1 className="text-gray-50 font-impact relative left-150 top-70">place data goes here </h1>
             </div>
             </div>
         </div>
