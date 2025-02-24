@@ -8,7 +8,10 @@ const App = () => {
     const base = "https://places.googleapis.com/v1/places:searchNearby"
     const getPlaces = async () => {
         const body = {
-            "includedTypes": ["amusement_park", "art_gallery", "bakery", "bar", "bowling_alley", "cafe", "casino", "liquor_store", "movie_theater", "night_club", "museum", "night_club", "park", "restaurant", "shopping_mall", "tourist_attraction"],
+            "includedTypes": ["art_gallery","museum","aquarium","casino","comedy_club","cultural_center","dance_hall","dog_park","garden","internet_cafe","karoke","movie_theater","night_club","park","skateboard_park","video_arcade","bagel_shop","bakery","cafe","coffee_shop","chocolate_shop","bar","bar_and_grill","restaurant","juice_shop","tea_house","yoga_studio","shopping_mall"],
+
+
+
             "maxResultCount": 20,
             "locationRestriction": {
                 "circle": {
