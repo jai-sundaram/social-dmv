@@ -20,13 +20,32 @@ const App = () => {
             }
         };
         try{
+            const response = await fetch(base, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-Goog-Api-Key": GOOGLE_KEY,
+                        "X-Goog-FieldMask": "places.displayName"
+                    },
+                    body: JSON.stringify(body)
+                }
+                )
+            const data = await response.json()
+            console.log(data)
+
 
         }
+            // eslint-disable-next-line no-unused-vars
         catch(error){
             console.log('there was an error');
         }
 
+
     }
+
+    useEffect( () => {
+        getPlaces()
+    }, [])
     return (
         <div className="bg-black w-full min-h-screen">
             <div className="h-screen">
