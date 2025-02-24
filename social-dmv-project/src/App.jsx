@@ -5,16 +5,16 @@ const TOMTOM_API_KEY = import.meta.env.VITE_TOMTOM_API_KEY
 const GOOGLE_KEY = import.meta.env.VITE_GOOGLE_KEY
 const App = () => {
     const [places, setPlaces] = useState([])
-    const base = "https://places.googleapis.com/v1/places:searchNearby\n"
+    const base = "https://places.googleapis.com/v1/places:searchNearby"
     const getPlaces = async () => {
         const body = {
-            "includedTypes": ["restaurant"],
+            "includedTypes": ["amusement_park", "art_gallery", "bakery", "bar", "bowling_alley", "cafe", "casino", "liquor_store", "movie_theater", "night_club", "museum", "night_club", "park", "restaurant", "shopping_mall", "tourist_attraction"],
             "maxResultCount": 20,
             "locationRestriction": {
                 "circle": {
                     "center": {
-                        "latitude": 37.7937,
-                        "longitude": -122.3965},
+                        "latitude": 38.9072,
+                        "longitude": -77.0369},
                     "radius": 500.0
                 }
             }
