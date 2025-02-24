@@ -1,7 +1,5 @@
 import {useState, useEffect} from 'react'
 import {Link} from 'react-scroll'
-import axios from 'axios';
-const TOMTOM_API_KEY = import.meta.env.VITE_TOMTOM_API_KEY
 const GOOGLE_KEY = import.meta.env.VITE_GOOGLE_KEY
 const App = () => {
     const [places, setPlaces] = useState([])
