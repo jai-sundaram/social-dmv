@@ -9,7 +9,7 @@ const App = () => {
     const getPlaces = async () => {
         const body = {
             "includedTypes": ["restaurant"],
-            "maxResultCount": 10,
+            "maxResultCount": 20,
             "locationRestriction": {
                 "circle": {
                     "center": {
@@ -25,7 +25,7 @@ const App = () => {
                     headers: {
                         "Content-Type": "application/json",
                         "X-Goog-Api-Key": GOOGLE_KEY,
-                        "X-Goog-FieldMask": "places.displayName"
+                        "X-Goog-FieldMask": "places.displayName,places.formattedAddress,places.currentOpeningHours,places.priceLevel,places.websiteUri,places.photos"
                     },
                     body: JSON.stringify(body)
                 }
