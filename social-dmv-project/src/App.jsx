@@ -1,12 +1,15 @@
 import {useState, useEffect} from 'react'
 import {Link} from 'react-scroll'
+import error from "eslint-plugin-react/lib/util/error.js";
+import Card from "./assets/Card.jsx";
 const GOOGLE_KEY = import.meta.env.VITE_GOOGLE_KEY
 const App = () => {
-    const [places, setPlaces] = useState([])
+    const [placesList, setPlacesList] = useState([])
+    const [error, setError] = useState('')
     const base = "https://places.googleapis.com/v1/places:searchNearby"
     const getPlaces = async () => {
         const body = {
-            "includedTypes": ["art_gallery","museum","aquarium","casino","comedy_club","cultural_center","dance_hall","dog_park","garden","internet_cafe","karoke","movie_theater","night_club","park","skateboard_park","video_arcade","bagel_shop","bakery","cafe","coffee_shop","chocolate_shop","bar","bar_and_grill","restaurant","juice_shop","tea_house","yoga_studio","shopping_mall"],
+            "includedTypes": ["art_gallery","museum","aquarium","casino","comedy_club","cultural_center","dance_hall","dog_park","garden","internet_cafe","karaoke","movie_theater","night_club","park","skateboard_park","video_arcade","bagel_shop","bakery","cafe","coffee_shop","chocolate_shop","bar","bar_and_grill","restaurant","juice_shop","tea_house","yoga_studio","shopping_mall"],
 
 
 
@@ -26,20 +29,25 @@ const App = () => {
                     headers: {
                         "Content-Type": "application/json",
                         "X-Goog-Api-Key": GOOGLE_KEY,
-                        "X-Goog-FieldMask": "places.displayName,places.formattedAddress,places.currentOpeningHours,places.priceLevel,places.websiteUri,places.photos"
+                        "X-Goog-FieldMask": "places.displayName,places.formattedAddress,places.currentOpeningHours,places.priceLevel,places.websiteUri,places.photos,places.id"
                     },
                     body: JSON.stringify(body)
                 }
                 )
             const data = await response.json()
-            console.log(data)
-
+            if (data.response === 'False'){
+                setPlacesList([]);
+            }
+            console.log(data.places)
+            setPlacesList(data.places)
 
         }
             // eslint-disable-next-line no-unused-vars
         catch(error){
             console.log('there was an error');
+            setError('Could not get data')
         }
+
 
 
     }
@@ -84,6 +92,18 @@ const App = () => {
             <div  className="h-screen">
             <div id="info-section">
                 <h1 className="text-gray-50 font-impact text-9xl  relative left-150 top-20">TEST</h1>
+                {error ? (
+                        <p className="text-gray-50 font-impact relative left-150 top-50">There is an error!</p>
+                    ):
+                    (
+                        <div className = "flex">
+                            {placesList.map((place)=> (
+                                <Card key = {place.id} place = {place} />
+                            ))}
+                        </div>
+                    )
+                }
+
             </div>
             </div>
         </div>
