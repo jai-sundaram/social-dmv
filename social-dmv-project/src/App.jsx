@@ -29,7 +29,7 @@ const App = () => {
                     headers: {
                         "Content-Type": "application/json",
                         "X-Goog-Api-Key": GOOGLE_KEY,
-                        "X-Goog-FieldMask": "places.displayName,places.formattedAddress,places.currentOpeningHours,places.priceLevel,places.websiteUri,places.photos,places.id"
+                        "X-Goog-FieldMask": "places.displayName,places.formattedAddress,places.currentOpeningHours,places.priceLevel,places.websiteUri,places.photos,places.id,places.primaryType,places.editorialSummary"
                     },
                     body: JSON.stringify(body)
                 }
