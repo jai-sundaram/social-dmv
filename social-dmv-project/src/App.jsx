@@ -56,6 +56,7 @@ const App = () => {
         getPlaces()
     }, [])
     return (
+        <div className = "overflow-x-hidden">
         <div className="bg-black w-full min-h-screen">
             <div className="h-screen">
                 <div>
@@ -79,7 +80,7 @@ const App = () => {
                         to="info-section"
                         spy={true}
                         smooth={true}
-                        offset={120}
+                        offset={80}
                         duration={1000}
                     >
                         <button className="h-20 w-62 bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-fuchsia-300 hover:scale-110 text-white font-bold">
@@ -96,8 +97,8 @@ const App = () => {
                         <p className="text-gray-50 font-impact relative left-150 top-50">There is an error!</p>
                     ):
                     (
-                        <div className ="text-gray-50 font-impact relative  top-50">
-                        <ul className="flex flex-wrap gap-6 justify-center">
+                        <div className ="text-gray-50 font-impact relative top-50 overflow-x-hidden">
+                        <ul className="flex flex-wrap gap-20 justify-center max-w-screen">
                             {placesList.map((place)=> (
                                 <Card key = {place.id} place = {place} />
                             ))}
@@ -108,6 +109,7 @@ const App = () => {
 
             </div>
             </div>
+        </div>
         </div>
     )
 }
