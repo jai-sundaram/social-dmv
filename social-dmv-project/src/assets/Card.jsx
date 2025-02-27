@@ -6,15 +6,14 @@ import React from 'react'
  */
 const Card = ({place}) => {
     return (
-        <div className = "rounded-2xl w-[400px] overflow-hidden shadow-xl shadow-white">
-            <div className = "p-5 text-xl">
+            <div className = "m-4 flex-none w-[calc(33.33%-20px)] max-w-[calc(33.33%-20px)]">
+            <div className = " text-xl rounded-2xl w-[400px] overflow-hidden shadow-xl shadow-white">
                 <h1 className = "font-bold text-gray-50"> Place Name: </h1>
                 <p className ="text-gray-50">More info</p>
                 <p className ="text-gray-50">More info</p>
                 <p className ="text-gray-50">More info</p>
             </div>
-
-        </div>
+            </div>
     );
 }
 export default Card

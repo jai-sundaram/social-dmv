@@ -96,10 +96,12 @@ const App = () => {
                         <p className="text-gray-50 font-impact relative left-150 top-50">There is an error!</p>
                     ):
                     (
-                        <div className = "flex">
+                        <div className ="text-gray-50 font-impact relative  top-50">
+                        <ul className="flex flex-wrap gap-6 justify-center">
                             {placesList.map((place)=> (
                                 <Card key = {place.id} place = {place} />
                             ))}
+                        </ul>
                         </div>
                     )
                 }
