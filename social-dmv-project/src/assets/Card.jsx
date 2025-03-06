@@ -52,6 +52,8 @@ const Card = ({place}) => {
                 <p className ="font-lucida-handwriting text-gray-50 justify-self-center  mt-2 ml-2 mr-2 font-card-name text-lg ">{place.editorialSummary?.text || 'No summary available'}</p>
                 <div>{showPrice()}</div>
                 <div>{showRatings()}</div>
+                <p className = "font-palatino text-gray-50 mt-2 ml-2 mr-2 text-lg">Phone number: {place.nationalPhoneNumber}</p>
+                <p className = "font-palatino text-gray-50 mt-2 ml-2 mr-2 text-lg">Address: {place.formattedAddress}</p>
             </div>
             </div>
     );

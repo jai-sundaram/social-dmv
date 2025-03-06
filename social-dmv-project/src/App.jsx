@@ -17,8 +17,8 @@ const App = () => {
             "locationRestriction": {
                 "circle": {
                     "center": {
-                        "latitude": 38.9072,
-                        "longitude": -77.0369},
+                        "latitude": 38.9175,
+                        "longitude": -77.0281},
                     "radius": 500.0
                 }
             }
@@ -29,7 +29,7 @@ const App = () => {
                     headers: {
                         "Content-Type": "application/json",
                         "X-Goog-Api-Key": GOOGLE_KEY,
-                        "X-Goog-FieldMask": "places.displayName,places.formattedAddress,places.currentOpeningHours,places.priceLevel,places.websiteUri,places.id,places.editorialSummary,places.priceRange,places.rating,places.userRatingCount,places.businessStatus"
+                        "X-Goog-FieldMask": "places.displayName,places.formattedAddress,places.currentOpeningHours,places.priceLevel,places.websiteUri,places.id,places.editorialSummary,places.priceRange,places.rating,places.userRatingCount,places.nationalPhoneNumber,places.websiteUri"
                     },
                     body: JSON.stringify(body)
                 }
