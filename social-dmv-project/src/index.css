@@ -4,7 +4,9 @@
     --font-impact: Impact, "Arial Black", sans-serif;
     --font-bebas-neue: "Bebas Neue", sans-serif;
     --text-large: 10em;
-    --font-card-name: 'Cedarville Cursive';
+    --font-lucida-handwriting: 'Lucida Handwriting', cursive;
+    --font-palatino: 'Palatino', serif;
+
 }
 
 @layer base {
