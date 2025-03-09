@@ -30,16 +30,11 @@ const Card = ({place}) => {
         }
     }
     const placeStatus = () =>{
-        if(status){
-            if(status === true){
-                return <p className = "font-palatino text-green-600 mt-2 justify-self-center text-lg">Open</p>
-            }
-            else if(status === false){
-                return <p className = "font-palatino text-red-700 mt-2 justify-self-center text-lg">Closed</p>
-            }
+        if(status===true){
+            return <p className = "font-palatino text-green-600 mt-2 justify-self-center text-lg">Open</p>
         }
         else{
-            return <p className = "font-palatino text-gray-600 mt-2 justify-self-center text-lg">Status Unknown</p>
+            return <p className = "font-palatino text-red-700 mt-2 justify-self-center text-lg">Closed</p>
 
         }
 
