@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import {Link} from 'react-scroll'
 import error from "eslint-plugin-react/lib/util/error.js";
 import Card from "./assets/Card.jsx";
+import Dropdown from "./assets/Dropdown.jsx";
 const GOOGLE_KEY = import.meta.env.VITE_GOOGLE_KEY
 const App = () => {
     const [placesList, setPlacesList] = useState([])
@@ -92,12 +93,14 @@ const App = () => {
 
             <div  className="h-screen">
             <div id="info-section">
-                <h1 className="text-gray-50 font-impact text-9xl  relative left-150 top-20">TEST</h1>
+                <h1 className="text-gray-50 font-impact text-9xl  relative left-30 top-20">EXPLORE YOUR OPTIONS</h1>
+                <div className = " relative top-30 left-115"><Dropdown/></div>
                 {error ? (
                         <p className="text-gray-50 font-impact relative left-150 top-50">There is an error!</p>
                     ):
                     (
                         <div className ="text-gray-50 font-impact relative top-50 overflow-x-hidden">
+
                         <ul className="flex flex-wrap gap-20 justify-center max-w-screen">
                             {placesList.map((place)=> (
                                 <Card key = {place.id} place = {place} />
