@@ -1,16 +1,31 @@
-import {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Link} from 'react-scroll'
 import error from "eslint-plugin-react/lib/util/error.js";
 import Card from "./assets/Card.jsx";
-import Dropdown from "./assets/Dropdown.jsx";
+import {BiChevronDown} from 'react-icons/bi'
 const GOOGLE_KEY = import.meta.env.VITE_GOOGLE_KEY
 const App = () => {
     const [placesList, setPlacesList] = useState([])
     const [error, setError] = useState('')
     const base = "https://places.googleapis.com/v1/places:searchNearby"
-    const getPlaces = async () => {
-        const body = {
+    const getPlaces = async (query = '') => {
+        const body = query ? {
+            "includedTypes": [query],
+
+
+
+            "maxResultCount": 20,
+            "locationRestriction": {
+                "circle": {
+                    "center": {
+                        "latitude": 38.9037,
+                        "longitude": -77.0363},
+                    "radius": 500.0
+                }
+            }
+        }:{
             "includedTypes": ["art_gallery","museum","aquarium","casino","comedy_club","cultural_center","dance_hall","dog_park","garden","internet_cafe","karaoke","movie_theater","night_club","park","skateboard_park","video_arcade","bagel_shop","bakery","cafe","coffee_shop","chocolate_shop","bar","bar_and_grill","restaurant","juice_shop","tea_house","yoga_studio","shopping_mall"],
+
 
 
 
@@ -20,7 +35,7 @@ const App = () => {
                     "center": {
                         "latitude": 38.9175,
                         "longitude": -77.0281},
-                    "radius": 500.0
+                    "radius": 9000.0
                 }
             }
         };
@@ -53,9 +68,15 @@ const App = () => {
 
     }
 
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState('');
+    function handleSelect(category){
+        setValue(category);
+        setOpen(false);
+    }
     useEffect( () => {
-        getPlaces()
-    }, [])
+        getPlaces(value)
+    }, [value])
     return (
         <div className = "overflow-x-hidden">
         <div className="bg-black w-full min-h-screen">
@@ -71,7 +92,7 @@ const App = () => {
 
                     <div className="mt-6 relative left-100">
                         <h1 className="text-gray-50 font-bebas-neue">
-                            Explore the best restaurants, bars, and clubs and much
+                            Find the best restaurants, bars, and clubs and much
                             more in the Washington D.C. area
                         </h1>
                     </div>
@@ -93,10 +114,41 @@ const App = () => {
 
             <div  className="h-screen">
             <div id="info-section">
-                <h1 className="text-gray-50 font-impact text-9xl  relative left-30 top-20">EXPLORE YOUR OPTIONS</h1>
-                <div className = " relative top-30 left-115"><Dropdown/></div>
+                <h1 className="text-gray-50 font-impact text-9xl  relative left-26 top-20">EXPLORE YOUR OPTIONS</h1>
+                <div className = " relative top-30 left-115 w-120 font-medium h-80">
+                    <div
+                        onClick={()=>setOpen(!open)}
+                        className = "bg-black border-4 border-fuchsia-300 text-white  w-full p-2 flex items-center justify-between rounded">
+                        Select Category
+                        <BiChevronDown />
+                    </div>
+                    <ul className = {`bg-black   mt-2 overflow-y-auto ${open? "max-h-80": "max-h-0"}`}>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("art_gallery")}>Art Gallery</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("bakery")}>Bakery</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("bagel_shop")}>Bagel Shop</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("bar")}>Bar</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("bar_and_grill")}>Bar And Grill</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("cafe")}>Cafe</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("comedy_club")}>Comedy Club</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("cultural_center")}>Cultural Center</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("cultural_landmark")}>Cultural Landmark</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("garden")}>Garden</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("gym")}>Gym</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("ice_cream_shop")}>Ice Cream Shop</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("juice_shop")}>Juice Shop</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("karaoke")}>Karaoke</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("movie_theater")}>Movie Theater</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("museum")}>Museum</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("night_club")}>Nightclub</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("park")}>Park</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("restaurant")}>Restaurant</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("sports_club")}>Sports Club</li>
+                        <li className = "p-2 text-sm hover:bg-fuchsia-300 text-white" onClick= {()=> handleSelect("yoga_studio")}>Yoga Studio</li>
+
+                    </ul>
+                </div>
                 {error ? (
-                        <p className="text-gray-50 font-impact relative left-150 top-50">There is an error!</p>
+                        <p className="text-gray-50 font-impact relative left-130 top-0">There is an error! Make sure you have acess to the internet</p>
                     ):
                     (
                         <div className ="text-gray-50 font-impact relative top-50 overflow-x-hidden">
@@ -114,6 +166,7 @@ const App = () => {
             </div>
         </div>
         </div>
+
     )
 }
 
