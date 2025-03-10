@@ -24,7 +24,7 @@ const App = () => {
                 }
             }
         }:{
-            "includedTypes": ["art_gallery","museum","aquarium","casino","comedy_club","cultural_center","dance_hall","dog_park","garden","internet_cafe","karaoke","movie_theater","night_club","park","skateboard_park","video_arcade","bagel_shop","bakery","cafe","coffee_shop","chocolate_shop","bar","bar_and_grill","restaurant","juice_shop","tea_house","yoga_studio","shopping_mall"],
+            "includedTypes": ["comedy_club","dog_park","garden","internet_cafe","karaoke","movie_theater","night_club","park","skateboard_park","video_arcade","bagel_shop","cafe","coffee_shop","chocolate_shop","bar","bar_and_grill","restaurant","juice_shop","tea_house","yoga_studio","shopping_mall"],
 
 
 
@@ -78,9 +78,9 @@ const App = () => {
         getPlaces(value)
     }, [value])
     return (
-        <div className = "overflow-x-hidden">
-        <div className="bg-black w-full min-h-screen">
-            <div className="h-screen">
+        <div className = "h-[120vh] overflow-x-clip">
+        <div className="bg-black w-full">
+            <div className="">
                 <div>
                     <div className = "relative left-140">
                         <img src="logo5.png" alt="Logo" />
@@ -151,7 +151,7 @@ const App = () => {
                         <p className="text-gray-50 font-impact relative left-130 top-0">There is an error! Make sure you have acess to the internet</p>
                     ):
                     (
-                        <div className ="text-gray-50 font-impact relative top-50 overflow-x-hidden">
+                        <div className ="text-gray-50 font-impact relative top-50">
 
                         <ul className="flex flex-wrap gap-20 justify-center max-w-screen">
                             {placesList.map((place)=> (
